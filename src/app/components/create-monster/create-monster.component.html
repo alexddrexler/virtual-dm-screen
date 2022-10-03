@@ -1,0 +1,108 @@
+<h2>Create:</h2>
+<p>Basic Details</p>
+
+<div id="name-field">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput type="text" [(ngModel)]="monster.name">
+    <button *ngIf="monster.name" matSuffix mat-icon-button aria-label="Clear" (click)="monster.name=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+<div id="description-field">
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" [(ngModel)]="monster.description">
+    <button *ngIf="monster.description" matSuffix mat-icon-button aria-label="Clear" (click)="monster.description=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+
+
+<div id="size-field">
+  <mat-form-field appearance="fill">
+    <mat-label>Size</mat-label>
+    <mat-select [(value)]="monster.size">
+      <mat-option [value]="size" *ngFor="let size of sizes">
+        {{size}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div id="type-field">
+  <mat-form-field appearance="fill">
+    <mat-label>Type</mat-label>
+    <mat-select [(value)]="monster.type">
+      <mat-option [value]="type" *ngFor="let type of types">
+        {{type}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div id="alignment-field">
+  <mat-form-field appearance="fill">
+    <mat-label>Alignment</mat-label>
+    <mat-select [(value)]="monster.alignment">
+      <mat-option [value]="alignment" *ngFor="let alignment of alignments">
+        {{alignment}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<p>Ability Scores</p>
+
+<div id="ability-scores-field">
+  <mat-form-field appearance="fill">
+    <mat-label>Strength</mat-label>
+    <input matInput type="number" min="0" max="30" [(ngModel)]="monster.ability_scores.str">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Dexterity</mat-label>
+    <input matInput type="number" min="0" max="30" [(ngModel)]="monster.ability_scores.dex">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Constitution</mat-label>
+    <input matInput type="number" min="0" max="30" [(ngModel)]="monster.ability_scores.con">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Intellegence</mat-label>
+    <input matInput type="number" min="0" max="30" [(ngModel)]="monster.ability_scores.int">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Wisdom</mat-label>
+    <input matInput type="number" min="0" max="30" [(ngModel)]="monster.ability_scores.wis">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Charisma</mat-label>
+    <input matInput type="number" min="0" max="30" [(ngModel)]="monster.ability_scores.cha">
+  </mat-form-field>
+</div>
+
+<p>Challenge Rating</p>
+
+<div id="armor-class-field">
+  <mat-form-field appearance="fill">
+    <mat-label>Armor Class</mat-label>
+    <input matInput type="number" min="10" max="20" [(ngModel)]="monster.armor_class">
+  </mat-form-field>
+</div>
+
+<div id="hit-points-field">
+  <mat-form-field appearance="fill">
+    <mat-label>Hit Points</mat-label>
+    <input matInput type="number" min="1" [(ngModel)]="monster.hit_points">
+  </mat-form-field>
+</div>
+
+<!-- TODO: Damage vulnerabilities, resistances, and immunities. -->
+
+<h2>Monster:</h2>
+<app-monster-tile [monster]="monster"></app-monster-tile>
+<h2>Example Monster:</h2>
+<app-monster-tile [monster]="banshee"></app-monster-tile>

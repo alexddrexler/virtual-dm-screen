@@ -1,0 +1,95 @@
+<mat-card *ngIf="monster">
+	<mat-card-header>
+		<mat-card-title>
+			{{monster.name}}
+		</mat-card-title>
+		<mat-card-subtitle>
+			<i>
+				{{monster.size}}
+				{{monster.type}}
+				{{monster.alignment}}
+			</i>
+		</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-content>
+		{{monster.description}}
+		<mat-divider></mat-divider>
+		<div class='basic_details'>
+			<b>Armor Class</b> {{monster.armor_class}}
+			<br>
+			<b>Hit Points</b> {{monster.hit_points}} <span *ngIf="monster.hit_points_dice">({{monster.hit_points_dice}})</span>
+			<br>
+			<!-- TODO: ADD SPEED. -->
+			<!-- <b>Speed</b> {{monster.speed}} -->
+		</div>
+		<mat-divider></mat-divider>
+		<div class='stats'>
+			<mat-grid-list cols="6" rowHeight="1:2">
+				<mat-grid-tile>
+					<mat-grid-tile-header>STR</mat-grid-tile-header>
+					{{monster.ability_scores.str}} ({{getStatModifier(monster.ability_scores.str)}})
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>DEX</mat-grid-tile-header>
+					{{monster.ability_scores.dex}} ({{getStatModifier(monster.ability_scores.dex)}})
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>CON</mat-grid-tile-header>
+					{{monster.ability_scores.con}} ({{getStatModifier(monster.ability_scores.con)}})
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>INT</mat-grid-tile-header>
+					{{monster.ability_scores.int}} ({{getStatModifier(monster.ability_scores.int)}})
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>WIS</mat-grid-tile-header>
+					{{monster.ability_scores.wis}} ({{getStatModifier(monster.ability_scores.wis)}})
+				</mat-grid-tile>
+				<mat-grid-tile>
+					<mat-grid-tile-header>CHA</mat-grid-tile-header>
+					{{monster.ability_scores.cha}} ({{getStatModifier(monster.ability_scores.cha)}})
+				</mat-grid-tile>
+			</mat-grid-list>
+		</div>
+		<!-- TODO: ADD THIS STUFF. -->
+<!-- 		
+    <mat-divider></mat-divider>
+		<div class='additional_details'>
+			<div *ngIf="monster.additional_details.saving_throws">
+				<b>Saving Throws</b> {{monster.additional_details.saving_throws}}
+			</div>
+			<div *ngIf="monster.additional_details.skills">
+				<b>Skills</b> {{monster.additional_details.skills}}
+			</div>
+			<div *ngIf="monster.additional_details.senses">
+				<b>Senses</b> {{monster.additional_details.senses}}
+			</div>
+			<div>
+				<b>Languages</b> {{(monster.additional_details.languages) ? 
+									monster.additional_details.languages : 
+									'--'}}
+			</div>
+			<div>
+				<b>Challenge</b> {{monster.additional_details.challenge}} ({{monster.additional_details.xp}} XP)
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+		<div class=traits>
+			<div *ngFor="let trait of monster.traits">
+				<b><i>{{trait.name}}.</i></b> {{trait.description}}
+			</div>
+		</div>
+		<div class=actions>
+			<h3>Actions</h3>
+			<div *ngFor="let action of monster.actions">
+				<b><i>{{action.name}}.</i></b>
+				<span *ngIf="action.description"> {{action.description}}</span>
+				<span *ngIf="action.attack_type"><i> {{action.attack_type}}:</i></span>
+				<span *ngIf="action.attack_details"> {{action.attack_details}}</span>
+				<span *ngIf="action.attack_hit"> <i>Hit:</i> {{action.attack_hit}}</span>
+				<span *ngIf="action.attack_hit_details"> {{action.attack_hit_details}}</span>
+			</div>
+		</div>
+-->
+	</mat-card-content>
+</mat-card>
