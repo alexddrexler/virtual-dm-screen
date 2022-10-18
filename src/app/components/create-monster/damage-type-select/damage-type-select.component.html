@@ -1,8 +1,13 @@
-<mat-form-field appearance="fill">
+<mat-form-field appearance="fill" class="damage-type-form">
   <mat-label>{{title}}</mat-label>
-  <mat-chip-list #typeList aria-label=title>
+  <mat-chip-list 
+    #typeList
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="drop($event)">
     <mat-chip 
       *ngFor="let type of out_types"
+      cdkDrag
       (removed)="remove(type)">
       {{type}}
       <button matChipRemove>
@@ -10,8 +15,8 @@
       </button>
     </mat-chip>
     <input
-      placeholder="Damage Type..."
       #typeInput
+      placeholder="Damage Type..."
       [formControl]="type_ctrl"
       [matAutocomplete]="auto"
       [matChipInputFor]="typeList"

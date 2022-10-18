@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ENTER } from '@angular/cdk/keycodes';
 
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -54,6 +55,10 @@ export class DamageTypeSelectComponent implements OnInit {
       this.out_types.splice(index, 1);
     }
     this.filtered_types = this._get_filtered_types();
+  }
+
+  drop(event: CdkDragDrop<string[]>): void {
+    moveItemInArray(this.out_types, event.previousIndex, event.currentIndex);
   }
 
   autoselected(event: MatAutocompleteSelectedEvent): void {
