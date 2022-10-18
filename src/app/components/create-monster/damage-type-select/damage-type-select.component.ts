@@ -28,10 +28,7 @@ export class DamageTypeSelectComponent implements OnInit {
   @ViewChild('typeInput') type_input!: ElementRef<HTMLInputElement>;
 
   constructor() {
-    this.filtered_types = this.type_ctrl.valueChanges.pipe(
-      startWith(null),
-      map((t: string | null) => (this._filter(t))),
-    );
+    this.filtered_types = this._get_filtered_types();
   }
 
   ngOnInit(): void {
@@ -56,12 +53,20 @@ export class DamageTypeSelectComponent implements OnInit {
     if (index >= 0) {
       this.out_types.splice(index, 1);
     }
+    this.filtered_types = this._get_filtered_types();
   }
 
   autoselected(event: MatAutocompleteSelectedEvent): void {
     this.out_types.push(event.option.viewValue);
     this.type_input.nativeElement.value = '';
     this.type_ctrl.setValue(null);
+  }
+
+  private _get_filtered_types(): Observable<string[]> {
+    return this.type_ctrl.valueChanges.pipe(
+      startWith(null),
+      map((t: string | null) => (this._filter(t))),
+    );
   }
 
   private _filter(value: string | null): string[] {
