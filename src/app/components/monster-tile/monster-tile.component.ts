@@ -108,4 +108,16 @@ export class MonsterTileComponent implements OnInit {
     return out;
   }
 
+  joinStringList(list: string[]): string {
+    if (list.length == 0) {
+      return '';
+    }
+    var out = list[0];
+    for (let x of list.slice(1)) {
+      var sep = x.includes(',') ? '; ' : ', ';
+      out = out + sep + x;
+    }
+    return out;
+  }
+
 }

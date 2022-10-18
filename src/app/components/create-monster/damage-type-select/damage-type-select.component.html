@@ -1,0 +1,26 @@
+<mat-form-field appearance="fill" class="damage-type-form">
+  <mat-label>{{title}}</mat-label>
+  <mat-chip-list #typeList aria-label=title>
+    <mat-chip 
+      *ngFor="let type of out_types"
+      (removed)="remove(type)">
+      {{type}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input
+      placeholder="Damage Type..."
+      #typeInput
+      [formControl]="type_ctrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="typeList"
+      [matChipInputSeparatorKeyCodes]="separator_key_codes"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="autoselected($event)">
+    <mat-option *ngFor="let type of filtered_types | async" [value]="type">
+      {{type}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

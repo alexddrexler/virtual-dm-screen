@@ -84,7 +84,7 @@
   </mat-form-field>
 </div>
 
-<p>Challenge Rating</p>
+<p>Defense</p>
 
 <div id="armor-class-field">
   <mat-form-field appearance="fill">
@@ -100,7 +100,26 @@
   </mat-form-field>
 </div>
 
-<!-- TODO: Damage vulnerabilities, resistances, and immunities. -->
+<div id="vulnerabilities-field">
+  <app-damage-type-select 
+    title="Damage Vulnerabilities"
+    [out_types]="monster.vulnerabilities">
+  </app-damage-type-select>
+</div>
+
+<div id="resistances-field">
+  <app-damage-type-select 
+    title="Damage Resistances"
+    [out_types]="monster.resistances">
+  </app-damage-type-select>
+</div>
+
+<div id="immunities-field">
+  <app-damage-type-select 
+    title="Damage Immunities"
+    [out_types]="monster.immunities">
+  </app-damage-type-select>
+</div>
 
 <h2>Monster:</h2>
 <app-monster-tile [monster]="monster"></app-monster-tile>

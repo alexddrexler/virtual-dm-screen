@@ -59,15 +59,16 @@ export class CreateMonsterComponent implements OnInit {
     hit_points_dice: '13d8',
     vulnerabilities: [],
     resistances: [
-      'acid',
-      'fire',
-      'lightning',
-      'thunder',
+      'Acid',
+      'Fire',
+      'Lightning',
+      'Thunder',
+      'Bludgeoning, Piercing, and Slashing from Nonmagical Attacks'
     ],
     immunities: [
-      'cold',
-      'necrotic',
-      'poison',
+      'Cold',
+      'Necrotic',
+      'Poison',
     ]
   };
 
@@ -75,5 +76,7 @@ export class CreateMonsterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  //removeDamageType()
 
 }

@@ -51,6 +51,18 @@
 				</mat-grid-tile>
 			</mat-grid-list>
 		</div>
+		<mat-divider></mat-divider>
+		<div class='additional_details'>
+			<div *ngIf="monster.vulnerabilities.length">
+				<b>Damage Vulnerabilities</b> {{joinStringList(monster.vulnerabilities)}}
+			</div>
+			<div *ngIf="monster.resistances.length">
+				<b>Damage Resistances</b> {{joinStringList(monster.resistances)}}
+			</div>
+			<div *ngIf="monster.immunities.length">
+				<b>Damage Immunities</b> {{joinStringList(monster.immunities)}}
+			</div>
+		</div>
 		<!-- TODO: ADD THIS STUFF. -->
 <!-- 		
     <mat-divider></mat-divider>
