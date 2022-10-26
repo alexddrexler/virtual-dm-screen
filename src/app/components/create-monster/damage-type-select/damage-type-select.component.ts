@@ -19,7 +19,7 @@ import { DEFAULT_DAMAGE_TYPES } from '../../../interfaces/monster';
 export class DamageTypeSelectComponent implements OnInit {
 
   @Input() title: string = '';
-  @Input() out_types: string[] = [];
+  @Input() out_types!: string[];
 
   separator_key_codes: number[] = [ENTER];
   type_ctrl = new FormControl('');

@@ -1,84 +1,3 @@
-export interface Monster {
-  name: string,
-  description: string,
-  size: string,
-  type: string,
-  alignment: string,
-  ability_scores: AbilityScores,
-  armor_class: number,
-  hit_points: number,
-  hit_points_dice?: string,
-  vulnerabilities: string[],
-  resistances: string[],
-  immunities: string[],
-}
-
-// export enum Size {
-//   Null,
-//   Tiny,
-//   Small,
-//   Medium,
-//   Large,
-//   Huge,
-//   Gargantuan,
-// }
-
-// export enum Type {
-//   Null,
-//   Aberration,
-//   Beast,
-//   Celestial,
-//   Construct,
-//   Dragon,
-//   Elemental,
-//   Fey,
-//   Fiend,
-//   Giant,
-//   Humanoid,
-//   Monstrosity,
-//   Ooze,
-//   Plant,
-//   Undead,
-// }
-
-// export enum Alignment {
-//   Unaligned,
-//   LawfulGood,
-//   NeutralGood,
-//   ChaoticGood,
-//   LawfulNeutral,
-//   Neutral,
-//   ChaoticNeutral,
-//   LawfulEvil,
-//   NeutralEvil,
-//   ChaoticEvil,
-// }
-
-// export enum DamageType {
-//   Acid,
-//   Bludgeoning,
-//   Cold,
-//   Fire,
-//   Force,
-//   Lightning,
-//   Necrotic,
-//   Piercing,
-//   Poison,
-//   Psychic,
-//   Radiant,
-//   Slashing,
-//   Thunder,
-// }
-
-interface AbilityScores {
-  str: number,
-  dex: number,
-  con: number,
-  int: number,
-  wis: number,
-  cha: number,
-}
-
 export const SIZES = [
 	'Tiny',
 	'Small',
@@ -132,6 +51,36 @@ export const DEFAULT_DAMAGE_TYPES = [
 	'Slashing',
 	'Thunder',
 ]
+
+export interface Monster {
+  name: string,
+  description: string,
+  size: string,
+  type: string,
+  alignment: string,
+  ability_scores: AbilityScores,
+  armor_class: number,
+  hit_points: number,
+  hit_points_dice: string,
+  vulnerabilities: string[],
+  resistances: string[],
+  immunities: string[],
+}
+
+interface AbilityScores {
+  str: number,
+  dex: number,
+  con: number,
+  int: number,
+  wis: number,
+  cha: number,
+}
+
+interface Attack {
+
+}
+
+// TODO: Delete everything below eventually.
 
 export interface OldMonster {
 	name: string,

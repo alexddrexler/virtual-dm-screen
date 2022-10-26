@@ -25,7 +25,7 @@
 <div id="size-field">
   <mat-form-field appearance="fill">
     <mat-label>Size</mat-label>
-    <mat-select [(value)]="monster.size">
+    <mat-select [(value)]="monster.size" (selectionChange)="updateHitPointsDice()">
       <mat-option [value]="size" *ngFor="let size of sizes">
         {{size}}
       </mat-option>
@@ -96,8 +96,11 @@
 <div id="hit-points-field">
   <mat-form-field appearance="fill">
     <mat-label>Hit Points</mat-label>
-    <input matInput type="number" min="1" [(ngModel)]="monster.hit_points">
+    <input matInput type="number" min="1" [(ngModel)]="monster.hit_points" (change)="updateHitPointsDice()">
   </mat-form-field>
+  <span *ngIf="monster.hit_points_dice">
+    ({{monster.hit_points_dice}})
+  </span>
 </div>
 
 <div id="vulnerabilities-field">

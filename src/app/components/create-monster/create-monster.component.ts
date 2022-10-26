@@ -4,6 +4,16 @@ import { Monster } from '../../interfaces/monster';
 import { ALIGNMENTS, SIZES, TYPES } from '../../interfaces/monster';
 
 
+const HIT_POINTS_DIE_TABLE: { [id: string]: number} = {
+  'Tiny': 4,
+  'Small': 6,
+  'Medium': 8,
+  'Large': 10,
+  'Huge': 12,
+  'Gargantuan': 20,
+}
+
+
 @Component({
   selector: 'app-create-monster',
   templateUrl: './create-monster.component.html',
@@ -30,6 +40,7 @@ export class CreateMonsterComponent implements OnInit {
     },
     armor_class: 0,
     hit_points: 0,
+    hit_points_dice: '',
     vulnerabilities: [],
     resistances: [],
     immunities: [],
@@ -77,6 +88,15 @@ export class CreateMonsterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //removeDamageType()
+  updateHitPointsDice(): void {
+    if (!this.monster.size || !this.monster.hit_points) {
+      this.monster.hit_points_dice = '';
+    } else {
+      let die: number = HIT_POINTS_DIE_TABLE[this.monster.size];
+      let avg: number = die/2 + 0.5;
+      let die_count: number = Math.round(this.monster.hit_points / avg);
+      this.monster.hit_points_dice = die_count + 'd' + die;
+    }
+  }
 
 }
