@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ENTER } from '@angular/cdk/keycodes';
 
@@ -22,7 +22,7 @@ export class DamageTypeSelectComponent implements OnInit {
   @Input() out_types!: string[];
 
   separator_key_codes: number[] = [ENTER];
-  type_ctrl = new FormControl('');
+  type_ctrl = new UntypedFormControl('');
   filtered_types: Observable<string[]>;
   default_damage_types = DEFAULT_DAMAGE_TYPES;
 
